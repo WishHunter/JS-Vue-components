@@ -1,0 +1,201 @@
+@font-face
+	font-family: 'icomoon'
+	src: url('../fonts/icomoon.eot?xlo28i')
+	src: url('../fonts/icomoon.eot?xlo28i#iefix') format('embedded-opentype'), url('../fonts/icomoon.ttf?xlo28i') format('truetype'), url('../fonts/icomoon.woff?xlo28i') format('woff'), url('../fonts/icomoon.svg?xlo28i#icomoon') format('svg')
+	font-weight: normal
+	font-style: normal
+	font-display: block
+
+[class^="icon-"], [class*=" icon-"] 
+	font-family: 'icomoon' !important
+	speak: none
+	font-style: normal
+	font-weight: normal
+	font-variant: normal
+	text-transform: none
+	line-height: 1
+	letter-spacing: 0
+	font-feature-settings: "liga"
+	font-variant-ligatures: discretionary-ligatures
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+
+.icon-pencil:before 
+	content: "\e905"
+
+.icon-clipboard:before
+	content: "\e9b8"
+
+.icon-plus:before
+	content: "\ea0a"
+
+.icon-cancel-circle:before 
+	content: "\ea0d"
+
+.icon-checkmark:before
+	content: "\ea10"
+
+@mixin reset()
+	box-sizing: border-box
+	font-family: sans-serif
+	margin: 0
+
+@mixin icon()
+	@include reset()
+	text-decoration: none
+	color: #fff
+	border-radius: 100%
+	width: 30px
+	height: 30px
+	display: inline-flex
+	align-items: center
+	justify-content: center
+
+.todo
+	@include reset()
+	border-radius: 10px
+	display: inline-block
+	background-color: rgba(187, 187, 187, .2)
+	box-shadow: 0px 12px 15.68px 0.32px rgba(0, 0, 0, 0.3)
+	&__header
+		@include reset()
+		display: flex
+		justify-content: space-between
+		flex-wrap: wrap
+		align-items: center
+		border-radius: 10px
+		background-color: rgb(28, 47, 128)
+		padding: 30px
+		// max-width: 614px
+	&__name
+		@include reset()
+		font-size: 30px
+		color: rgb(255, 255, 255)
+		font-weight: bold
+		line-height: 1
+		padding: 5px 0 5px 33px
+		border-left: 2px solid rgb(255, 120, 0)
+	&__edit
+		@include reset()
+		color: #fff
+		text-decoration: none
+	&__add-block
+		@include reset()
+		position: relative
+		width: 100%
+		padding-left: 35px
+		padding-top: 35px
+		display: flex
+		justify-content: space-between
+	&__add-input
+		@include reset()
+		padding: 4px 0
+		border: none
+		line-height: 1
+		border-bottom: 1px solid #fff
+		opacity: .5
+		font-size: 18px
+		color: #fff
+		background: none
+		flex-grow: 1
+		margin-right: 30px
+		transition: all .2s
+		&:focus
+			outline: none
+			opacity: 1
+	&__add-button
+		@include icon()
+		background-color: rgb(255, 120, 0)
+
+	&__list
+		@include reset()
+		padding: 30px
+	&__line
+		@include reset()
+		display: flex
+		align-items: center
+		padding-bottom: 30px
+		&-completed
+			.todo__line-check
+				background-color: rgb(255, 120, 0)
+			.todo__line-name
+				color: rgba(8, 8, 8, 0.502)
+				position: relative
+				&:after 
+					content: ''
+					display: block
+					position: absolute
+					right: -5px
+					width: calc(100% + 10px)
+					height: 1px
+					background-color: gray
+					top: calc(50% - .5px)
+	&__line-check
+		@include icon()
+		background-color: rgb(28, 47, 128)
+		transition: all .2s
+		&:hover
+			background-color: rgb(255, 120, 0)
+	&__line-name
+		@include reset()
+		padding: 4px 0
+		font-size: 30px
+		color: rgb(8, 8, 8)
+		border: none
+		border-bottom: 1px solid transparent
+		line-height: 1
+		background: none
+		margin: 0 30px
+	&__line-delete
+		@include icon()
+		background-color: rgb(255, 120, 0)
+		margin-left: auto
+		display: none
+		transition: all .2s
+		.icon-plus
+			transform: rotate(45deg)
+		&:hover
+			background-color: rgb(28, 47, 128)
+
+	&__footer
+		@include reset()
+		border-radius: 10px
+		background-color: rgb(28, 47, 128)
+		padding: 22px 30px
+		display: flex
+		justify-content: space-between
+		& > *
+			color: #fff
+			font-size: 18px
+			text-decoration: none
+			transition: all .2s
+			&:hover
+				color: #ff7800
+
+	&-edit-everything
+		.todo__line-delete
+			display: flex
+
+	&.todo-filterCheckin
+		.todo__line
+			display: none
+		.todo__line-completed
+			display: flex
+		.todo__filter-checkin
+			color: #ff7800
+
+	&.todo-filterCheckout
+		.todo__line-completed
+			display: none
+		.todo__filter-checkout
+			color: #ff7800
+
+input.todo__line-name
+	border-color: rgb(8, 8, 8)
+	opacity: .5
+	outline: none
+	padding: 2px 0
+	flex-grow: 1
+	transition: all .2s
+	&:focus
+		opacity: 1

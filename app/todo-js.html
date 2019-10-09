@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="initial-scale=1.0,  user-scalable=yes" name="viewport"/>
+	<title></title>
+	<link rel="stylesheet" href="css/todo-js.css">
+</head>
+<body>
+	<div class="jstest" style="display: block; margin: 0 auto; width: 660px"></div>
+</body>
+<script src="js/todo-js.js"></script>
+
+<script>
+	let testTODOList = [
+		{id:1,name:'Задача 1',completed:false},
+		{id:2,name:'Задача 2',completed:false},
+		{id:3,name:'Задача 3',completed:true},
+		{id:2,name:'Задача 4',completed:false}
+	];
+
+	new TodoJS('.jstest', 'TODO list', testTODOList);
+</script>
+</html>
